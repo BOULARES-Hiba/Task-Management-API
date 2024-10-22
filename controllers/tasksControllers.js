@@ -1,16 +1,15 @@
 
-
 export const get_tasks = (req, res) => {
    console.log("get")
    
 }
 
-export const  set_tasks = (req , res ) => {
-   console.log("post")
+export const set_tasks = (req , res ) => {
+console.log(req.body)
 }
 
-export const  get_task = (req , res ) => {
-   console.log("get one task")
+export const get_task = (req , res ) => {
+   console.log(req.params.id)
 }
 
 export const  change_task = (req , res ) => {

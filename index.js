@@ -1,11 +1,25 @@
 import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv'; 
+dotenv.config(); 
+
 import taskRouter from './routers/tasksRouter.js';
 
 const app = express();
 
-app.use('/api/v1/tasks',taskRouter)
+app.use(express.json());
 
-const Port = 3000;
-app.listen(Port, () => {
-   console.log(`server is running on port ${Port}`)
-})
+const port = process.env.PORT || 3000;
+
+app.use('/api/v1/tasks', taskRouter);
+
+mongoose.connect(process.env.DATABASE_URL)
+  .then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Error connecting to the database', err);
+  });
