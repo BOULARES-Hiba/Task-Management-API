@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 
 const taskSchema = new mongoose.Schema({
    name: {
-      type: String,
-      required: true 
+      type: String, 
+      trim: true, 
+      required: [true, 'Must provide a name'],
+      maxlength: [20, 'Name must be less than 20 characters']
    },
    completed: {
       type: Boolean,
@@ -11,6 +13,6 @@ const taskSchema = new mongoose.Schema({
    }
 });
 
-const task = mongoose.model('task', taskSchema);
+const Task = mongoose.model('task', taskSchema);
 
-export default task;
+export default Task;
