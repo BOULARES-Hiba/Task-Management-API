@@ -14,7 +14,6 @@ try {
 export const set_tasks = async (req, res) => {
    try {
       const newTask = Task.create(req.body);
-      console.log(req.body)
       res.status(201).json(newTask);
    } catch (error) {
       res.status(400).json({ message: "Error creating task", error });

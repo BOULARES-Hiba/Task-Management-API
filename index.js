@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'; 
 dotenv.config(); 
-
+import  notFound  from './controllers/not-found.js';
 import taskRouter from './routers/tasksRouter.js';
 
 const app = express();
@@ -13,6 +13,8 @@ const port = process.env.PORT || 3000;
 
 app.use('/api/v1/tasks', taskRouter);
 
+
+app.use(notFound);
 mongoose.connect(process.env.DATABASE_URL)
   .then(() => {
     console.log('Connected to MongoDB');
