@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'; 
 dotenv.config(); 
-import  notFound  from './controllers/not-found.js';
+import  notFound  from './middelwares/not-found.js';
 import taskRouter from './routers/tasksRouter.js';
 
 const app = express();
